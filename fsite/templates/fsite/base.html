@@ -1,0 +1,108 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+    <link rel="shortcut icon" href="{% static 'fsite/images/logo.png' %}" type="image/x-icon">
+    <link href="{% static 'fsite/css/styles.css' %}" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
+{% block mainmenu %}
+<div class="header">
+    <div class="container">
+        <div class="header-line">
+            <div class="header-logo">
+                <a href="{% url '' %}"><img src="{% static 'fsite/images/logo.png' %}" alt=""></a>
+            </div>
+            <div class="nav">
+                {% for m in menu %}
+                    <a class="nav-item"  href='{% url m.url_name %}'>{{ m.title }}</a>
+                {% endfor %}
+            </div>
+            <div class="soc">
+                {% for s in socials %}
+                    <div class="socials">
+                        <a href="{{ s.url }}"><img src="{{ s.icon.url }}"></a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock mainmenu %}
+
+{% block content %}
+<div class="header-down">
+    <div class="container">
+        <div class="header-image">
+            <img src="{% static 'fsite/images/mainimage.png' %} " width="1400" height="800" alt="Изображение тети">
+        </div>
+    </div>
+</div>
+<div class="undermain">
+    <div class="container-second">
+        <div class="itemsinside">
+            <div class="company">
+                {{ title_companys }}
+            </div>
+            {% for p in posts %}
+                <a href="{{ p.url }}"><img class="companys" src="{{ p.photo.url }}"></a>
+            {% endfor %}
+
+        </div>
+    </div>
+</div>
+<div class="name">
+    {{ title_treningi }}
+</div>
+<div class="treningi">
+    <div class="container">
+        <div class="tr-holder">
+            <div class="tr">
+                <div class="tr-image">
+                    {% for pe in pests %}
+                    <div class="ramka">
+                        <div class="tr_icons">
+                            <img class="tr_img" src="{{ pe.img.url }}">
+                        </div>
+                        <div class="tr-desc">
+                            {{ pe.desc }}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-second">
+    <div class="name1">
+        {{ title_blogs }}
+    </div>
+        <div class="bloger">
+
+            {% for b in blogs %}
+                <div class="blog">
+                    <div class="blog-image-ramka">
+                        <img class="blog-img" src="{{ b.blog_img.url }}" width="400" height="300">
+                    </div>
+                    <div class="blog-name">
+                        <h3>{{b.blog_title|linebreaks|truncatewords:10}}</h3>
+                    </div>
+                    <div class="button">
+                        <a class="btn" href='{% url 'show_blog' b.pk %}'>{{ b.title }}</a>
+                    </div>
+                </div>
+
+            {% endfor %}
+        </div>
+</div>
+
+
+{% endblock content %}
+</body>
+</html>

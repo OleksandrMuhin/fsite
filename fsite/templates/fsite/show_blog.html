@@ -1,0 +1,15 @@
+{% extends 'fsite/base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="name2">
+        {{ title_blogs }}
+    </div>
+    <div class="blog-title">
+        {{ blog.blog_title}}
+    </div>
+    <img class="img" src="{{ blog.blog_img.url }}" width="400">
+    <div class="blog_text">
+        {{ blog.blog_text }}
+    </div>
+{% endblock %}

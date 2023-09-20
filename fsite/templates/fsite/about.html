@@ -1,0 +1,24 @@
+{% extends 'fsite/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="header-down">
+    <div class="container">
+        <div class="header-image">
+            <img src="{% static 'fsite/images/mainimage.png' %} " width="1400" height="800" alt="Изображение тети">
+        </div>
+    </div>
+</div>
+<div class="undermain">
+    <div class="container-second">
+        <div class="itemsinside">
+            <div class="company">
+                {{ title_companys }}
+            </div>
+            {% for p in posts %}
+                <a href="{{ p.url }}"><img class="companys" src="{{ p.photo.url }}"></a>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock content %}

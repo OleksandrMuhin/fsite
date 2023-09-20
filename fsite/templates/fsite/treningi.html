@@ -1,0 +1,25 @@
+{% extends 'fsite/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="treningi">
+    <div class="container">
+        <div class="tr-holder">
+            <div class="tr">
+                <div class="tr-image">
+                    {% for pe in pests %}
+                    <div class="ramka">
+                        <div class="tr_icons">
+                            <img class="tr_img" src="{{ pe.img.url }}">
+                        </div>
+                        <div class="tr-desc">
+                            {{ pe.desc }}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

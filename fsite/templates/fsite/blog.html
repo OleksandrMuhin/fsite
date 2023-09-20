@@ -1,0 +1,27 @@
+{% extends 'fsite/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container-second">
+    <div class="name1">
+        {{ title_blogs }}
+    </div>
+        <div class="bloger">
+        {% for b in blogs %}
+                <div class="blog">
+                    <div class="blog-image-ramka">
+                        <img class="blog-img" src="{{ b.blog_img.url }}" width="400" height="300">
+                    </div>
+                    <div class="blog-name">
+                        <h3>{{b.blog_title|linebreaks|truncatewords:10}}</h3>
+                    </div>
+                    <div class="button">
+                        <a class="btn" href='{% url 'show_blog' b.pk %}'>{{ b.title }}</a>
+                    </div>
+                </div>
+
+            {% endfor %}
+    </div>
+</div>
+</div>
+{% endblock content %}
